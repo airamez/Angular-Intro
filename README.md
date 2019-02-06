@@ -1,15 +1,13 @@
 
 # Introduction to Angular
-Source: https://angular.io/
+- https://angular.io/
+
 # What is Angular?
-
-Source: https://angular.io/docs
-
+- https://angular.io/docs
 Angular is a platform that makes it easy to build applications with the web. Angular combines declarative templates, dependency injection, end to end tooling, and integrated best practices to solve development challenges. Angular empowers developers to build applications that live on the web, mobile, or the desktop.
 
 # Quick Start
 Source: https://angular.io/guide/quickstart
-
 # Prerequisites
 
 ## Node.js
@@ -38,7 +36,9 @@ npm uninstall
 - Typescript is a typed superset of JavaScript that compiles to plain JavaScript
 
 ## First Angular Application and Anatomy
-- Creating
-```ng new [application_name]```
-- Running
-```ng serve --open```
+- Creating: ```ng new [application_name]```
+- Running: ```ng serve --open```
+
+## Anatomy
+- https://angular.io/guide/file-structure/
+### Important folders/files:
