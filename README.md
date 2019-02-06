@@ -46,6 +46,7 @@ npm uninstall
 ### Important folders/files:
 
 | Folder/Files | Description |
+-------------- | -----------
 | /package.json	| Configures npm package dependencies that are available to all projects in the workspace |
 | /angular.json	| CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as TSLint, Karma, and Protractor. |
 | /node_modules	| Provides npm packages to the entire workspace. |
