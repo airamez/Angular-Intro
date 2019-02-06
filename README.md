@@ -64,3 +64,11 @@ npm uninstall
 | /src/app/app.module.ts | Defines the root module, named AppModule, that tells Angular how to assemble the application. |
 | /src/app/ | Contains image files and other asset files to be copied as-is when you build your application.	Contains image files and other asset files to be copied as-is when you build your application. |
 
+# Architecture Overview
+## Modules
+## Components
+## Templates, Directives, and data binding
+## Services and dependency injection
+## Routing
+
+
