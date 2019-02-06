@@ -24,7 +24,7 @@ Source: https://angular.io/guide/quickstart
 ## NPM
 
 - https://www.npmjs.com/
-- npm is the package manager for JavaScript and the world’s largest software registry. Discover packages of reusable code — and assemble them in powerful new ways.
+- npm is the package manager for JavaScript and the world’s largest software registry. Discover packages of reusable code and assemble them in powerful new ways.
 - Most used command:
 ```
 npm install
