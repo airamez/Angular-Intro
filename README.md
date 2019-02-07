@@ -123,7 +123,7 @@ CREATE src/app/data-binding/data-binding.component.css (0 bytes)
 
 ## Basics about data binding and HTML template
 ### Showing component properties with interpolation
-  - Use the double curly braces: `{{property}}`
+  - Use the double curly braces: `{{property / expression}}`
   - Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -144,7 +144,7 @@ export class DataBindingComponent implements OnInit {
   - HTML template
 ```
 <p>
-  User Name: {{user_name}}
+  User Name: {{user_name}} has {{user_name.length}} characters
 </p>
 ```
 ### Interpoloation looping thru data
@@ -169,7 +169,7 @@ export class DataBindingComponent implements OnInit {
 - HTML template
 ```
 <ul>
-  <li *ngFor="let name of names">{{name}}</li>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
 
