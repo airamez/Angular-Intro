@@ -73,10 +73,12 @@ npm uninstall
 - /src/app/app.module.ts
 - /src/app/app-routing.module.ts
 - /src/index.html
+  - `<app-root></app-root>`
 - /src/styles.css
 - /src/app/app.component.html
 - /src/app/app.component.css
 - /src/app/app.component.ts
+  - `selector: 'app-root'`
 - /src/app/app.component.spec.ts
 - /node_modules
 
