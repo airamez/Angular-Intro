@@ -75,9 +75,9 @@ npm uninstall
 - /src/index.html
   - `<app-root></app-root>`
 - /src/styles.css
+- /src/app/app.component.ts
 - /src/app/app.component.html
 - /src/app/app.component.css
-- /src/app/app.component.ts
   - `selector: 'app-root'`
 - /src/app/app.component.spec.ts
 - /node_modules
@@ -85,15 +85,6 @@ npm uninstall
 # Preparing for a new project
 
 ## Cleaning files
-- `app.component.html`
-```
-<div style="text-align:center">
-  <h1>
-    Learning Angular
-  </h1>
-</div>
-<router-outlet></router-outlet>
-```
 
 - `app.component.ts`
 ```
@@ -108,9 +99,21 @@ export class AppComponent {
 }
 ```
 
-## app.component.html
+- `app.component.html`
+```
+<div style="text-align:center">
+  <h1>Learning Angular</h1>
+</div>
+<router-outlet></router-outlet>
+```
 
-## app.component.ts
+## Creating a component
+- ```ng generate component data-binding```
+- Generated files under /src/app/data-binding
+  - data-binding.component.css
+  - data-binding.component.html
+  - data-binding.component.ts
+  - data-binding.component.specs.ts
 
 # Architecture Overview
 ## Modules
