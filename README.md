@@ -86,7 +86,7 @@ npm uninstall
 
 ## Cleaning files
 
-- `app.component.ts`
+### app.component.ts
 ```
 import { Component } from '@angular/core';
 
@@ -99,7 +99,7 @@ export class AppComponent {
 }
 ```
 
-- `app.component.html`
+### app.component.html
 ```
 <div style="text-align:center">
   <h1>Learning Angular</h1>
@@ -124,7 +124,7 @@ CREATE src/app/data-binding/data-binding.component.css (0 bytes)
 # Basics about data binding and HTML template
 ## Showing component properties with interpolation
   - Use the double curly braces: `{{property / expression}}`
-  - Component class
+### Component class
 ```
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -141,7 +141,7 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-  - HTML template
+### HTML template
 ```
 <p>
   User Name: {{user_name}} has {{user_name.length}} characters
@@ -149,7 +149,7 @@ export class DataBindingComponent implements OnInit {
 ```
 # Showing data with tnterpoloation looping thru data
 - Use `*ngFor="let element of collection"` directive
-- Component class
+## Component class
 ```
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -166,7 +166,7 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-- HTML template
+## HTML template
 ```
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
@@ -175,7 +175,7 @@ export class DataBindingComponent implements OnInit {
 
 # Showing components conditionally
 - Use `*ngIf='condition'` directive
-- HTML template
+## HTML template
 ```
 <ul *ngIf="names?.length >= 3">
   <li *ngFor="let name of names">{{name}}</li>
@@ -185,7 +185,7 @@ export class DataBindingComponent implements OnInit {
 # User input
 ## Binding a method to a button click
 - Use the notation: (event)="method()"
-- Component class
+### Component class
 ```
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -205,7 +205,7 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-- HTML template
+### HTML template
 ```
 <button (click)="addName()">Add Name</button>
 <ul>
@@ -249,7 +249,7 @@ export class DataBindingComponent implements OnInit {
 </ul>
 ```
 
-# Getting user input by binding a HTML component to a component property
+## Getting user input by binding a HTML component to a component property
 - Use the two way databind decorator `[(property)]`
 - Change the `app.module.ts` file to add the Forms module
 ### app.module.ts
@@ -277,7 +277,12 @@ import { FormsModule } from '@angular/forms';
 export class AppModule { }
 ```
 
-
+### HTML Template
+<input type="text" [(ngModel)]="newName" />
+<button (click)="addName()">Add Name</button>
+<ul>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+</ul>
 
 # Architecture Overview
 ## Modules
