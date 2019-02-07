@@ -224,8 +224,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./data-binding.component.css']
 })
 export class DataBindingComponent implements OnInit {
+  
   names: string[];
-  newName: string;
+
   constructor() { 
     this.names = [];
   }
