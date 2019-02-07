@@ -108,12 +108,70 @@ export class AppComponent {
 ```
 
 ## Creating a component
-- ```ng generate component data-binding```
-- Generated files under /src/app/data-binding
-  - data-binding.component.css
-  - data-binding.component.html
-  - data-binding.component.ts
-  - data-binding.component.specs.ts
+- command: `ng generate component data-binding`
+- output:
+```
+CREATE src/app/data-binding/data-binding.component.html (31 bytes)
+CREATE src/app/data-binding/data-binding.component.spec.ts (664 bytes)
+CREATE src/app/data-binding/data-binding.component.ts (292 bytes)
+CREATE src/app/data-binding/data-binding.component.css (0 bytes)
+```
+- Inspect each file
+
+## Addinting the component to the Application
+- Add the component `selector` as an HTML tag to the `app.component.html`
+
+## Basics about data binding and HTML template
+### Showing component properties with interpolation
+  - Use the double curly braces: `{{property}}`
+  - Component class
+```
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent implements OnInit {
+  user_name: string;
+  constructor() { 
+    this.user_name = "Jose";
+  }
+  ngOnInit() {
+  }
+}
+```
+  - HTML template
+```
+<p>
+  User Name: {{user_name}}
+</p>
+```
+### Looping thru data and doing interpolation with `*ngFor`
+- Use `*ngFor="let element of collection"`
+- Component class
+```
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent implements OnInit {
+  names: string[];
+  constructor() { 
+    this.names = ['Jose', 'Leila', 'Artur'];
+  }
+  ngOnInit() {
+  }
+}
+```
+- HTML template
+```
+<ul>
+  <li *ngFor="let name of names">{{name}}</li>
+</ul>
+```
 
 # Architecture Overview
 ## Modules
