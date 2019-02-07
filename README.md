@@ -148,7 +148,7 @@ export class DataBindingComponent implements OnInit {
 </p>
 ```
 ### Interpoloation looping thru data
-- Use `*ngFor="let element of collection"`
+- Use `*ngFor="let element of collection"` directive
 - Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -172,6 +172,15 @@ export class DataBindingComponent implements OnInit {
   <li *ngFor="let name of names">{{name}}</li>
 </ul>
 ```
+
+### Showing components conditionally
+- Use `*ngIf='condition'` directive
+- HTML template
+```
+<ul *ngIf="names?.length >= 3">
+  <li *ngFor="let name of names">{{name}}</li>
+</ul>
+``` 
 
 # Architecture Overview
 ## Modules
