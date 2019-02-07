@@ -37,14 +37,14 @@ npm uninstall
 - https://www.typescriptlang.org/
 - Typescript is a typed superset of JavaScript that compiles to plain JavaScript
 
-## First Angular Application and Anatomy
+# First Angular Application and Anatomy
 - Creating: ```ng new [application_name]```
 - Running: ```ng serve --open```
 
 ## Anatomy
 - https://angular.io/guide/file-structure/
 
-### Important folders/files:
+## Important folders/files:
 
 | Folder/Files | Description |
 -------------- | -----------
@@ -67,7 +67,7 @@ npm uninstall
 | /src/app/app.module.ts | Defines the root module, named AppModule, that tells Angular how to assemble the application. |
 | /src/app/ | Contains image files and other asset files to be copied as-is when you build your application.	Contains image files and other asset files to be copied as-is when you build your application. |
 
-### Files to inspect
+## Files to inspect
 - /angular.json
 - /package.json
 - /src/app/app.module.ts
@@ -81,6 +81,34 @@ npm uninstall
   - `selector: 'app-root'`
 - /src/app/app.component.spec.ts
 - /node_modules
+
+# Preparing for a new project
+
+## Cleaning the `app.component.ts` and `app.component.html` files
+
+## app.component.html
+```
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Learning Angular
+  </h1>
+</div>
+<router-outlet></router-outlet>
+```
+
+## app.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+}
+```
 
 # Architecture Overview
 ## Modules
