@@ -252,6 +252,8 @@ export class DataBindingComponent implements OnInit {
 ## Getting user input by binding a HTML component to a component property
 - Use the two way databind decorator `[(property)]`
 - Change the `app.module.ts` file to add the Forms module
+  - Add the import clause
+  - Add FormsModule to the imposts array
 ### app.module.ts
 ```
 import { BrowserModule } from '@angular/platform-browser';
@@ -277,12 +279,42 @@ import { FormsModule } from '@angular/forms';
 export class AppModule { }
 ```
 
+### Component class
+```
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent implements OnInit {
+  
+  names: string[];
+  newName: string;
+
+  constructor() { 
+    this.names = [];
+    this.newName = "";
+  }
+
+  ngOnInit() {}
+
+  addName () {
+    this.names.push(this.newName);
+    this.newName = '';
+  }
+}
+```
 ### HTML Template
+```
 <input type="text" [(ngModel)]="newName" />
 <button (click)="addName()">Add Name</button>
+<p *ngIf="newName">New name value: {{newName}}</p>
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
+```
 
 # Architecture Overview
 ## Modules
