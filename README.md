@@ -89,7 +89,6 @@ npm uninstall
 ### app.component.ts
 ```
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -184,7 +183,7 @@ export class DataBindingComponent implements OnInit {
 
 # User input
 ## Binding a method to a button click
-- Use the notation: (event)="method()"
+- Use the notation: (event)="method($event)"
 ### Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -200,21 +199,23 @@ export class DataBindingComponent implements OnInit {
   }
   ngOnInit() {
   }
-  addName () {
+  addName (event) {
+    debugger;
     alert("Add User clicked!");
   }
 }
 ```
 ### HTML template
 ```
-<button (click)="addName()">Add Name</button>
+<button (click)="addName($event)">Add Name</button>
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
 
 ## Getting user input from a template reference variable
-- Use the # to declare a template reference variable
+- A template reference varible provide direct access to an element from within the template.
+- To declare a template reference variable, precede an identifier with a hash (or pound) character (#).
 ### Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -224,15 +225,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./data-binding.component.css']
 })
 export class DataBindingComponent implements OnInit {
-  
   names: string[];
-
   constructor() { 
     this.names = [];
   }
-
   ngOnInit() {}
-
   addName (newName: any) {
     debugger;
     this.names.push(newName.value);
@@ -282,24 +279,19 @@ export class AppModule { }
 ### Component class
 ```
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.css']
 })
 export class DataBindingComponent implements OnInit {
-  
   names: string[];
   newName: string;
-
   constructor() { 
     this.names = [];
     this.newName = "";
   }
-
   ngOnInit() {}
-
   addName () {
     this.names.push(this.newName);
     this.newName = '';
@@ -322,5 +314,3 @@ export class DataBindingComponent implements OnInit {
 ## Templates, Directives, and data binding
 ## Services and dependency injection
 ## Routing
-
-
