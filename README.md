@@ -180,7 +180,38 @@ export class DataBindingComponent implements OnInit {
 <ul *ngIf="names?.length >= 3">
   <li *ngFor="let name of names">{{name}}</li>
 </ul>
-``` 
+```
+
+### User input
+- Biding a method to a button click
+  - Use the notation: (event)="method()"
+- Component class
+```
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent implements OnInit {
+  names: string[];
+  constructor() { 
+    this.names = [];
+  }
+  ngOnInit() {
+  }
+  addName () {
+    alert("Add User clicked!");
+  }
+}
+```
+- HTML template
+```
+<button (click)="addName()">Add Name</button>
+<ul>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+</ul>
+```
 
 # Architecture Overview
 ## Modules
