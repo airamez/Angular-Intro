@@ -84,11 +84,9 @@ npm uninstall
 
 # Preparing for a new project
 
-## Cleaning the `app.component.ts` and `app.component.html` files
-
-## app.component.html
+## Cleaning files
+- `app.component.html`
 ```
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
     Learning Angular
@@ -97,7 +95,7 @@ npm uninstall
 <router-outlet></router-outlet>
 ```
 
-## app.component.ts
+- `app.component.ts`
 ```
 import { Component } from '@angular/core';
 
@@ -109,6 +107,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
 }
 ```
+
+## app.component.html
+
+## app.component.ts
 
 # Architecture Overview
 ## Modules
