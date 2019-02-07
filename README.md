@@ -147,7 +147,7 @@ export class DataBindingComponent implements OnInit {
   User Name: {{user_name}}
 </p>
 ```
-### Looping thru data and doing interpolation with `*ngFor`
+### Interpoloation looping thru data
 - Use `*ngFor="let element of collection"`
 - Component class
 ```
