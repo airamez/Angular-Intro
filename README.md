@@ -118,11 +118,11 @@ CREATE src/app/data-binding/data-binding.component.css (0 bytes)
 ```
 - Inspect each file
 
-## Addinting the component to the Application
+## Adding the component to the Application
 - Add the component `selector` as an HTML tag to the `app.component.html`
 
-## Basics about data binding and HTML template
-### Showing component properties with interpolation
+# Basics about data binding and HTML template
+## Showing component properties with interpolation
   - Use the double curly braces: `{{property / expression}}`
   - Component class
 ```
@@ -147,7 +147,7 @@ export class DataBindingComponent implements OnInit {
   User Name: {{user_name}} has {{user_name.length}} characters
 </p>
 ```
-### Interpoloation looping thru data
+# Showing data with tnterpoloation looping thru data
 - Use `*ngFor="let element of collection"` directive
 - Component class
 ```
@@ -173,7 +173,7 @@ export class DataBindingComponent implements OnInit {
 </ul>
 ```
 
-### Showing components conditionally
+# Showing components conditionally
 - Use `*ngIf='condition'` directive
 - HTML template
 ```
@@ -182,9 +182,9 @@ export class DataBindingComponent implements OnInit {
 </ul>
 ```
 
-### User input
-- Biding a method to a button click
-  - Use the notation: (event)="method()"
+# User input
+## Binding a method to a button click
+- Use the notation: (event)="method()"
 - Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -208,6 +208,41 @@ export class DataBindingComponent implements OnInit {
 - HTML template
 ```
 <button (click)="addName()">Add Name</button>
+<ul>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+</ul>
+```
+
+## Getting user input from a template reference variable
+- Use the # to declare a template reference variable
+- Component class
+```
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent implements OnInit {
+  names: string[];
+  newName: string;
+  constructor() { 
+    this.names = [];
+  }
+
+  ngOnInit() {}
+
+  addName (newName: any) {
+    debugger;
+    this.names.push(newName.value);
+    newName.value = '';
+  }
+}
+```
+- HTML Template
+```
+<input type="text" #newName>
+<button (click)="addName(newName)">Add Name</button>
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
