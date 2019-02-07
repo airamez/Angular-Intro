@@ -215,7 +215,7 @@ export class DataBindingComponent implements OnInit {
 
 ## Getting user input from a template reference variable
 - Use the # to declare a template reference variable
-- Component class
+### Component class
 ```
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -240,7 +240,7 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-- HTML Template
+### HTML Template
 ```
 <input type="text" #newName>
 <button (click)="addName(newName)">Add Name</button>
@@ -248,6 +248,36 @@ export class DataBindingComponent implements OnInit {
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
+
+# Getting user input by binding a HTML component to a component property
+- Use the two way databind decorator `[(property)]`
+- Change the `app.module.ts` file to add the Forms module
+### app.module.ts
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { DataBindingComponent } from './data-binding/data-binding.component';
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    DataBindingComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+
 
 # Architecture Overview
 ## Modules
