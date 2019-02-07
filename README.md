@@ -237,7 +237,7 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-### HTML Template
+### HTML template
 ```
 <input type="text" #newName>
 <button (click)="addName(newName)">Add Name</button>
@@ -298,7 +298,7 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-### HTML Template
+### HTML template
 ```
 <input type="text" [(ngModel)]="newName" />
 <button (click)="addName()">Add Name</button>
@@ -325,6 +325,46 @@ export class DataBindingComponent implements OnInit {
     this.newName = "";
   }
   ngOnInit() {}
+  addName () {
+    this.names.push(this.newName);
+    this.newName = '';
+  }
+  newNameOnKey(event: KeyboardEvent) {
+    console.log(event.key + " " + event.keyCode);
+    if (event.key === "Enter") {
+      this.addName();
+    }
+  }
+}
+```
+### HTML template
+```
+<input type="text" [(ngModel)]="newName" (keyup)="newNameOnKey($event)"/>
+<button (click)="addName()">Add Name</button>
+<p *ngIf="newName">New name value: {{newName}}</p>
+<ul>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+</ul>
+```
+## Key event filtering (with key.enter)
+- The (keyup) event handler hears every keystroke. Sometimes only the Enter key matters, because it signals that the user has finished typing.
+
+### Component class
+```
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent implements OnInit {
+  names: string[];
+  newName: string;
+  constructor() { 
+    this.names = [];
+    this.newName = "";
+  }
+  ngOnInit() {}
   addName() {
     this.names.push(this.newName);
     this.newName = '';
@@ -334,7 +374,8 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-### HTML Template
+
+### HTML template
 ```
 <input type="text" [(ngModel)]="newName" (keyup.enter)="addName()"/>
 <button (click)="addName()">Add Name</button>
@@ -344,9 +385,6 @@ export class DataBindingComponent implements OnInit {
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
-## Key event filtering (with key.enter)
-- The (keyup) event handler hears every keystroke. Sometimes only the Enter key matters, because it signals that the user has finished typing.
-
 
 # Architecture Overview
 ## Modules
