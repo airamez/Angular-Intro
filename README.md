@@ -385,8 +385,6 @@ export class DataBindingComponent implements OnInit {
 }
 ```
 
-
-
 # Architecture Overview
 https://angular.io/guide/architecture
 - The basic building blocks of an Angular application are NgModules, which provide a compilation context for components.
@@ -402,3 +400,5 @@ https://angular.io/guide/architecture-components#data-binding
 # Routing
 https://angular.io/guide/architecture-components#pipes
 # Pipes
+
+http://file:components.md
