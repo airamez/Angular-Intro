@@ -86,6 +86,14 @@ npm uninstall
 
 ## Cleaning files
 
+### app.component.html
+```
+<div style="text-align:center">
+  <h1>Learning Angular</h1>
+</div>
+<router-outlet></router-outlet>
+```
+
 ### app.component.ts
 ```
 import { Component } from '@angular/core';
@@ -96,14 +104,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 }
-```
-
-### app.component.html
-```
-<div style="text-align:center">
-  <h1>Learning Angular</h1>
-</div>
-<router-outlet></router-outlet>
 ```
 
 ## Creating a component
@@ -123,6 +123,14 @@ CREATE src/app/data-binding/data-binding.component.css (0 bytes)
 # Basics about data binding and HTML template
 ## Showing component properties with interpolation
   - Use the double curly braces: `{{property / expression}}`
+
+### HTML template
+```
+<p>
+  User Name: {{user_name}} has {{user_name.length}} characters
+</p>
+```
+
 ### Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -140,14 +148,14 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-### HTML template
-```
-<p>
-  User Name: {{user_name}} has {{user_name.length}} characters
-</p>
-```
 # Showing data with tnterpoloation looping thru data
 - Use `*ngFor="let element of collection"` directive
+## HTML template
+```
+<ul>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+</ul>
+```
 ## Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -165,12 +173,6 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-## HTML template
-```
-<ul>
-  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
-</ul>
-```
 
 # Showing components conditionally
 - Use `*ngIf='condition'` directive
@@ -184,6 +186,13 @@ export class DataBindingComponent implements OnInit {
 # User input
 ## Binding a method to a button click
 - Use the notation: (event)="method($event)"
+### HTML template
+```
+<button (click)="addName($event)">Add Name</button>
+<ul>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+</ul>
+```
 ### Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -205,17 +214,17 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
+## Getting user input from a template reference variable
+- A template reference varible provide direct access to an element from within the template.
+- To declare a template reference variable, precede an identifier with a hash (or pound) character (#).
 ### HTML template
 ```
-<button (click)="addName($event)">Add Name</button>
+<input type="text" #newName>
+<button (click)="addName(newName)">Add Name</button>
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
-
-## Getting user input from a template reference variable
-- A template reference varible provide direct access to an element from within the template.
-- To declare a template reference variable, precede an identifier with a hash (or pound) character (#).
 ### Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -237,15 +246,6 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
-### HTML template
-```
-<input type="text" #newName>
-<button (click)="addName(newName)">Add Name</button>
-<ul>
-  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
-</ul>
-```
-
 ## Getting user input by binding a HTML component to a component property
 - Use the two way databind decorator `[(property)]`
 - Change the `app.module.ts` file to add the Forms module
@@ -276,6 +276,15 @@ import { FormsModule } from '@angular/forms';
 export class AppModule { }
 ```
 
+### HTML template
+```
+<input type="text" [(ngModel)]="newName" />
+<button (click)="addName()">Add Name</button>
+<p *ngIf="newName">New name value: {{newName}}</p>
+<ul>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+</ul>
+```
 ### Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -298,17 +307,17 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
+## Get user input from the $event object
+- The $event represent the DOM event and carry a payload of information about the event/component
 ### HTML template
 ```
-<input type="text" [(ngModel)]="newName" />
+<input type="text" [(ngModel)]="newName" (keyup)="newNameOnKey($event)"/>
 <button (click)="addName()">Add Name</button>
 <p *ngIf="newName">New name value: {{newName}}</p>
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
-## Get user input from the $event object
-- The $event represent the DOM event and carry a payload of information about the event/component
 ### Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -337,18 +346,19 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
+## Key event filtering (with key.enter)
+- The (keyup) event handler hears every keystroke. Sometimes only the Enter key matters, because it signals that the user has finished typing.
+
 ### HTML template
 ```
-<input type="text" [(ngModel)]="newName" (keyup)="newNameOnKey($event)"/>
+<input type="text" [(ngModel)]="newName" (keyup.enter)="addName()"/>
 <button (click)="addName()">Add Name</button>
+<button (click)="deleteNames()">Delete names</button>
 <p *ngIf="newName">New name value: {{newName}}</p>
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
-## Key event filtering (with key.enter)
-- The (keyup) event handler hears every keystroke. Sometimes only the Enter key matters, because it signals that the user has finished typing.
-
 ### Component class
 ```
 import { Component, OnInit } from '@angular/core';
@@ -373,17 +383,6 @@ export class DataBindingComponent implements OnInit {
     this.names = [];
   }
 }
-```
-
-### HTML template
-```
-<input type="text" [(ngModel)]="newName" (keyup.enter)="addName()"/>
-<button (click)="addName()">Add Name</button>
-<button (click)="deleteNames()">Delete names</button>
-<p *ngIf="newName">New name value: {{newName}}</p>
-<ul>
-  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
-</ul>
 ```
 
 # Architecture Overview
