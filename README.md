@@ -388,6 +388,7 @@ export class DataBindingComponent implements OnInit {
 # Architecture Overview
 ## Modules
 ## Components
+### livecycle
 ## Templates, Directives, and data binding
 ## Services and dependency injection
 ## Routing
