@@ -401,4 +401,4 @@ https://angular.io/guide/architecture-components#data-binding
 https://angular.io/guide/architecture-components#pipes
 # Pipes
 
-http://file:components.md
+./components.md
