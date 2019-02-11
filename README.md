@@ -156,17 +156,17 @@ export class DataBindingComponent {
 }
 ```
 
-# Showing data with tnterpoloation looping thru data
+## Showing data with interpoloation looping thru data
 - Use `*ngFor="let element of collection"` directive
 
-## HTML template
+### HTML template
 ```
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
 
-## Component class
+### Component class
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -182,12 +182,12 @@ export class DataBindingComponent {
 }
 ```
 
-# Showing components conditionally and the ng-container tag
+## Showing components conditionally and the ng-container tag
 https://angular.io/guide/structural-directives
 - Use `*ngIf='condition'` directive
 - The <ng-template> is an Angular element for rendering HTML. It is never displayed directly.
 
-## HTML template
+### HTML template
 ```
 <ul *ngIf="names.length >= 4">
   <!-- 
@@ -200,7 +200,7 @@ https://angular.io/guide/structural-directives
 </ul>
 ```
 
-## Components class
+### Components class
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -216,8 +216,6 @@ export class DataBindingComponent {
   }
 }
 ```
-
-# User input / Data binding
 
 ## Binding a method to a button click
 - Use the notation: (event)="method($event)"
