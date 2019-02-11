@@ -156,7 +156,7 @@ export class DataBindingComponent {
 }
 ```
 
-## Showing data with interpoloation looping thru data
+## Showing data with interpoloation looping thru collections
 - Use `*ngFor="let element of collection"` directive
 
 ### HTML template
