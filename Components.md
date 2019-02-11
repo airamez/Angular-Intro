@@ -14,7 +14,7 @@ https://angular.io/guide/architecture
 - Change the tag adding the component to pass the input parameter using the annotation: ` [parameter_name] = "property/expression"`
   - If we are passing just a string, it has to be delimited by ' ' or " " 
 
-## Parent component HTML template
+### Parent component HTML template
 ```
 <div style="text-align:center">
   <h1>Learning Angular</h1>
@@ -77,7 +77,7 @@ export class DataBindingComponent implements OnInit {
 <button (click)="namesOuput()">Return names</button>
 ```
 
-# Child component class
+### Child component class
 ```
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
@@ -117,7 +117,7 @@ export class DataBindingComponent {
 </ul>
 ```
 
-# Parent component class
+### Parent component class
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -134,6 +134,3 @@ export class AppComponent {
 }
 ```
   
-
-
-
