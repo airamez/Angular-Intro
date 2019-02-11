@@ -1,10 +1,8 @@
-
 # Introduction to Angular
 - https://angular.io/
 
 # What is Angular?
 - https://angular.io/docs
-
 Angular is a platform that makes it easy to build applications with the web. Angular combines declarative templates, dependency injection, end to end tooling, and integrated best practices to solve development challenges. Angular empowers developers to build applications that live on the web, mobile, or the desktop.
 
 # Quick Start
@@ -121,6 +119,10 @@ CREATE src/app/data-binding/data-binding.component.css (0 bytes)
 - Add the component `selector` as an HTML tag to the `app.component.html`
 
 # Basics about data binding and HTML template
+- Data binding is one of the most powerful and important features in any software development language.
+- It allows us to define communication between the component and view.
+- So we can say that data binding is passed from component to view and from view to the component.
+
 ## Showing component properties with interpolation
   - Use the double curly braces: `{{property / expression}}`
 
@@ -133,7 +135,7 @@ CREATE src/app/data-binding/data-binding.component.css (0 bytes)
 
 ### Component class
 ```
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
@@ -144,21 +146,22 @@ export class DataBindingComponent implements OnInit {
   constructor() { 
     this.user_name = "Jose";
   }
-  ngOnInit() {
-  }
 }
 ```
+
 # Showing data with tnterpoloation looping thru data
 - Use `*ngFor="let element of collection"` directive
+
 ## HTML template
 ```
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
+
 ## Component class
 ```
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
@@ -169,13 +172,12 @@ export class DataBindingComponent implements OnInit {
   constructor() { 
     this.names = ['Jose', 'Leila', 'Artur'];
   }
-  ngOnInit() {
-  }
 }
 ```
 
 # Showing components conditionally
 - Use `*ngIf='condition'` directive
+
 ## HTML template
 ```
 <ul *ngIf="names?.length >= 3">
@@ -184,8 +186,10 @@ export class DataBindingComponent implements OnInit {
 ```
 
 # User input / Data binding
+
 ## Binding a method to a button click
 - Use the notation: (event)="method($event)"
+
 ### HTML template
 ```
 <button (click)="addName($event)">Add Name</button>
@@ -193,9 +197,10 @@ export class DataBindingComponent implements OnInit {
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
+
 ### Component class
 ```
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
@@ -206,17 +211,17 @@ export class DataBindingComponent implements OnInit {
   constructor() { 
     this.names = [];
   }
-  ngOnInit() {
-  }
   addName (event) {
     debugger;
     alert("Add User clicked!");
   }
 }
 ```
+
 ## Getting user input from a template reference variable
 - A template reference varible provide direct access to an element from within the template.
 - To declare a template reference variable, precede an identifier with a hash (or pound) character (#).
+
 ### HTML template
 ```
 <input type="text" #newName>
@@ -225,9 +230,10 @@ export class DataBindingComponent implements OnInit {
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
+
 ### Component class
 ```
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
@@ -238,7 +244,6 @@ export class DataBindingComponent implements OnInit {
   constructor() { 
     this.names = [];
   }
-  ngOnInit() {}
   addName (newName: any) {
     debugger;
     this.names.push(newName.value);
@@ -246,11 +251,13 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
+
 ## Getting user input by binding a HTML component to a component property
 - Use the two way databind decorator `[(property)]`
 - Change the `app.module.ts` file to add the Forms module
   - Add the import clause
   - Add FormsModule to the imposts array
+
 ### app.module.ts
 ```
 import { BrowserModule } from '@angular/platform-browser';
@@ -285,9 +292,10 @@ export class AppModule { }
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
+
 ### Component class
 ```
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
@@ -300,15 +308,16 @@ export class DataBindingComponent implements OnInit {
     this.names = [];
     this.newName = "";
   }
-  ngOnInit() {}
   addName () {
     this.names.push(this.newName);
     this.newName = '';
   }
 }
 ```
+
 ## Get user input from the $event object
 - The $event represent the DOM event and carry a payload of information about the event/component
+
 ### HTML template
 ```
 <input type="text" [(ngModel)]="newName" (keyup)="newNameOnKey($event)"/>
@@ -318,9 +327,10 @@ export class DataBindingComponent implements OnInit {
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
+
 ### Component class
 ```
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
@@ -333,7 +343,6 @@ export class DataBindingComponent implements OnInit {
     this.names = [];
     this.newName = "";
   }
-  ngOnInit() {}
   addName () {
     this.names.push(this.newName);
     this.newName = '';
@@ -346,6 +355,7 @@ export class DataBindingComponent implements OnInit {
   }
 }
 ```
+
 ## Key event filtering (with key.enter)
 - The (keyup) event handler hears every keystroke. Sometimes only the Enter key matters, because it signals that the user has finished typing.
 
@@ -359,9 +369,10 @@ export class DataBindingComponent implements OnInit {
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
+
 ### Component class
 ```
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
@@ -374,7 +385,6 @@ export class DataBindingComponent implements OnInit {
     this.names = [];
     this.newName = "";
   }
-  ngOnInit() {}
   addName() {
     this.names.push(this.newName);
     this.newName = '';
