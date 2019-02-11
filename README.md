@@ -156,7 +156,7 @@ export class DataBindingComponent {
 }
 ```
 
-## Showing data with interpoloation looping thru collections
+## Showing data with interpolation looping thru collections
 - Use `*ngFor="let element of collection"` directive
 
 ### HTML template
@@ -248,7 +248,7 @@ export class DataBindingComponent {
 }
 ```
 
-## Getting user input from a template reference variable
+## Getting user input using a template reference variable
 - A template reference varible provide direct access to an element from within the template.
 - To declare a template reference variable, precede an identifier with a hash (or pound) character (#).
 
@@ -317,7 +317,7 @@ export class AppModule { }
 ```
 <input type="text" [(ngModel)]="newName" />
 <button (click)="addName()">Add Name</button>
-<p *ngIf="newName">New name value: {{newName}}</p>
+<p>New name value: {{newName}}</p>
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
@@ -346,13 +346,13 @@ export class DataBindingComponent {
 ```
 
 ## Get user input from the $event object
-- The $event represent the DOM event and carry a payload of information about the event/component
+- The $event represents the DOM event and carry a payload of information about the event/component
 
 ### HTML template
 ```
 <input type="text" [(ngModel)]="newName" (keyup)="newNameOnKey($event)"/>
 <button (click)="addName()">Add Name</button>
-<p *ngIf="newName">New name value: {{newName}}</p>
+<p>New name value: {{newName}}</p>
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
@@ -394,7 +394,7 @@ export class DataBindingComponent {
 <input type="text" [(ngModel)]="newName" (keyup.enter)="addName()"/>
 <button (click)="addName()">Add Name</button>
 <button (click)="deleteNames()">Delete names</button>
-<p *ngIf="newName">New name value: {{newName}}</p>
+<p>New name value: {{newName}}</p>
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
