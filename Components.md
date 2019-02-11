@@ -8,23 +8,15 @@ https://angular.io/guide/architecture
 
 # Components
 
-## Input paramters
-- Add the Input to the import clause from '@angular/core'
-- Create a propert with the decorator @Input()
-- Change the tag adding the component to pass the input parameter using the annotation: ` [parameter_name] = "property/expression"`
-  - If we are passing just a string (not a property), it has to be delimited (by ' ' or " " )
+## Input parameters binding to component property
+- Child component
+  - Add the Input to the import clause from '@angular/core'
+  - Create a propert with the decorator @Input()
+- Parent component
+  - Change the tag adding the child component to pass the input parameter using the annotation: `[parameter_name] = "property/expression"`
+  - If the input parameter value is just a string (not a property), it has to be delimited (by ' ' or " " )
 
-### Parent component HTML template
-```
-<div style="text-align:center">
-  <h1>Learning Angular</h1>
-</div>
-<app-data-binding [addButtonLabel] = "'Click to Add a Name'"></app-data-binding>
-<app-data-binding [addButtonLabel] = "'Add Name'"></app-data-binding>
-<app-data-binding></app-data-binding>
-```
-
-### HTML template
+### Child HTML template
 ```
 <input type="text" [(ngModel)]="newName"/>
 <button (click)="addName()">{{addButtonLabel}}</button>
@@ -34,7 +26,7 @@ https://angular.io/guide/architecture
 </ul>
 ```
 
-### Component class
+### Child Component class
 ```
 import { Component, OnInit, Input } from '@angular/core';
 @Component({
@@ -54,6 +46,94 @@ export class DataBindingComponent implements OnInit {
   addName () {
     this.names.push(this.newName);
     this.newName = '';
+  }
+}
+```
+
+### Parent component HTML template
+```
+<div style="text-align:center">
+  <h1>Learning Angular</h1>
+</div>
+<app-data-binding [addButtonLabel] = "'Click to Add a Name'"></app-data-binding>
+<app-data-binding [addButtonLabel] = "'Add Name'"></app-data-binding>
+<app-data-binding></app-data-binding>
+```
+
+## Input parameters binding to set/get method
+- Child component
+  - Create a private attribute and the set and get methods under the @Input decorator
+- Parent component
+  - Change the tag adding the child component to pass the input parameter using the annotation: `[parameter_name] = "property/expression"`
+  - If the input parameter value is just a string (not a property), it has to be delimited (by ' ' or " " )
+
+### Child component HTML template
+```
+<input type="text" [(ngModel)]="newName"/>
+<button (click)="addName()">{{addButtonLabel}}</button>
+<ul>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+</ul>
+```
+
+### Child component class
+```
+import { Component, Input } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent {
+  private _addButtonLabel = 'Add';
+
+  @Input()
+  set addButtonLabel(label: string) {
+    this._addButtonLabel = label;
+  }
+  get addButtonLabel(): string {
+    return this._addButtonLabel;
+  }
+
+  names: string[];
+  newName: string;
+  constructor() { 
+    this.names = [];
+    this.newName = "";
+  }
+  addName () {
+    this.names.push(this.newName);
+    this.newName = '';
+    this.addButtonLabel = "This a new Add Name label";
+  }
+}
+```
+
+### Parent component HTML
+```
+<div style="text-align:center">
+    <h1>Learning Angular</h1>
+</div>
+<p>Add Button label: {{addButtonLabel}}</p>
+<app-data-binding 
+  [addButtonLabel]="addButtonLabel">
+</app-data-binding>
+```
+
+### Parent component class
+```
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  names: string[];
+  addButtonLabel = 'Add a new name';
+  constructor() { }
+  namesOuput(event: string[]) {
+    this.names = event;
   }
 }
 ```
