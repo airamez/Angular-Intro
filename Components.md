@@ -61,7 +61,8 @@ export class DataBindingComponent implements OnInit {
 - Child component
   - Create a private attribute and the set and get methods under the @Input decorator
 - Parent component
-  - Change the tag adding the child component to pass the input parameter using the annotation: `[parameter_name] = "property/expression"`
+  - Change the tag adding the child component to pass the input parameter using the annotation:
+    `[parameter_name] = "property/expression"`
   - If the input parameter value is just a string (not a property), it has to be delimited (by ' ' or " " )
 
 ### Child component HTML template
@@ -111,7 +112,8 @@ export class DataBindingComponent {
 ### Parent component HTML
 ```
 <p>Add Button label: {{addButtonLabel}}</p>
-<button (click)="changeLabel(addButtonLabelInput.value)">Change 'addButtonLabel'</button><input type="text" #addButtonLabelInput>
+<button (click)="changeLabel(addButtonLabelInput.value)">Change 'addButtonLabel'</button>
+<input type="text" #addButtonLabelInput>
 <app-data-binding 
   [addButtonLabel]="addButtonLabel">
 </app-data-binding>
@@ -213,4 +215,5 @@ export class AppComponent {
   }
 }
 ```
-  
+
+# Component lifecycle
