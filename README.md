@@ -89,7 +89,6 @@ npm uninstall
 <div style="text-align:center">
   <h1>Learning Angular</h1>
 </div>
-<router-outlet></router-outlet>
 ```
 
 ### app.component.ts
