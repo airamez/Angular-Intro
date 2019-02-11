@@ -141,7 +141,7 @@ import { Component } from '@angular/core';
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.css']
 })
-export class DataBindingComponent implements OnInit {
+export class DataBindingComponent {
   user_name: string;
   constructor() { 
     this.user_name = "Jose";
@@ -167,7 +167,7 @@ import { Component } from '@angular/core';
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.css']
 })
-export class DataBindingComponent implements OnInit {
+export class DataBindingComponent {
   names: string[];
   constructor() { 
     this.names = ['Jose', 'Leila', 'Artur'];
@@ -206,7 +206,7 @@ import { Component } from '@angular/core';
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.css']
 })
-export class DataBindingComponent implements OnInit {
+export class DataBindingComponent {
   names: string[];
   constructor() { 
     this.names = [];
@@ -239,7 +239,7 @@ import { Component } from '@angular/core';
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.css']
 })
-export class DataBindingComponent implements OnInit {
+export class DataBindingComponent {
   names: string[];
   constructor() { 
     this.names = [];
@@ -301,7 +301,7 @@ import { Component } from '@angular/core';
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.css']
 })
-export class DataBindingComponent implements OnInit {
+export class DataBindingComponent {
   names: string[];
   newName: string;
   constructor() { 
@@ -336,7 +336,7 @@ import { Component } from '@angular/core';
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.css']
 })
-export class DataBindingComponent implements OnInit {
+export class DataBindingComponent {
   names: string[];
   newName: string;
   constructor() { 
@@ -378,7 +378,7 @@ import { Component } from '@angular/core';
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.css']
 })
-export class DataBindingComponent implements OnInit {
+export class DataBindingComponent {
   names: string[];
   newName: string;
   constructor() { 
