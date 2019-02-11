@@ -283,7 +283,7 @@ export class DataBindingComponent {
 ```
 
 ## Getting user input by binding a HTML component to a component property
-- Use the two way databind decorator `[(property)]`
+- Use the two way databind decorator: `[(ngModel)]="component_property"`
 - Change the `app.module.ts` file to add the Forms module
   - Add the import clause
   - Add FormsModule to the imposts array
