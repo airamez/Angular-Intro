@@ -52,9 +52,6 @@ export class DataBindingComponent implements OnInit {
 
 ### Parent component HTML template
 ```
-<div style="text-align:center">
-  <h1>Learning Angular</h1>
-</div>
 <app-data-binding [addButtonLabel] = "'Click to Add a Name'"></app-data-binding>
 <app-data-binding [addButtonLabel] = "'Add Name'"></app-data-binding>
 <app-data-binding></app-data-binding>
@@ -69,11 +66,14 @@ export class DataBindingComponent implements OnInit {
 
 ### Child component HTML template
 ```
-<input type="text" [(ngModel)]="newName"/>
-<button (click)="addName()">{{addButtonLabel}}</button>
-<ul>
-  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
-</ul>
+<div style="border-style: solid">
+  <h1>Child component</h1>
+  <input type="text" [(ngModel)]="newName"/>
+  <button (click)="addName()">{{addButtonLabel}}</button>
+  <ul>
+    <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+  </ul>
+</div>
 ```
 
 ### Child component class
@@ -104,17 +104,14 @@ export class DataBindingComponent {
   addName () {
     this.names.push(this.newName);
     this.newName = '';
-    this.addButtonLabel = "This a new Add Name label";
   }
 }
 ```
 
 ### Parent component HTML
 ```
-<div style="text-align:center">
-    <h1>Learning Angular</h1>
-</div>
 <p>Add Button label: {{addButtonLabel}}</p>
+<button (click)="changeLabel(addButtonLabelInput.value)">Change 'addButtonLabel'</button><input type="text" #addButtonLabelInput>
 <app-data-binding 
   [addButtonLabel]="addButtonLabel">
 </app-data-binding>
@@ -134,6 +131,9 @@ export class AppComponent {
   constructor() { }
   namesOuput(event: string[]) {
     this.names = event;
+  }
+  changeLabel(newLabel: string) {
+    this.addButtonLabel = newLabel;
   }
 }
 ```
