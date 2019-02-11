@@ -67,7 +67,7 @@ export class DataBindingComponent implements OnInit {
 ### Child component HTML template
 ```
 <div style="border-style: solid">
-  <h1>Child component</h1>
+  <h2>Child component</h2>
   <input type="text" [(ngModel)]="newName"/>
   <button (click)="addName()">{{addButtonLabel}}</button>
   <ul>
@@ -188,11 +188,8 @@ export class DataBindingComponent {
 
 ### Parent component HTML template
 ```
-<div style="text-align:center">
-    <h1>Learning Angular</h1>
-</div>
 <app-data-binding (onNamesOuput)="namesOuput($event)"> </app-data-binding>
-<h1>Names</h1>
+<h3>Names</h3>
 <ul>
     <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
