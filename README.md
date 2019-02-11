@@ -117,6 +117,14 @@ CREATE src/app/data-binding/data-binding.component.css (0 bytes)
 ## Adding the component to the Application
 - Add the component `selector` as an HTML tag to the `app.component.html`
 
+### app.component.html
+```
+<div style="text-align:center">
+  <h1>Learning Angular</h1>
+</div>
+<app-data-binding></app-data-binding>
+```
+
 # Basics about data binding and HTML template
 - Data binding is one of the most powerful and important features in any software development language.
 - It allows us to define communication between the component and view.
@@ -174,14 +182,39 @@ export class DataBindingComponent {
 }
 ```
 
-# Showing components conditionally
+# Showing components conditionally and the ng-container tag
+https://angular.io/guide/structural-directives
 - Use `*ngIf='condition'` directive
+- The <ng-template> is an Angular element for rendering HTML. It is never displayed directly.
 
 ## HTML template
 ```
-<ul *ngIf="names?.length >= 3">
-  <li *ngFor="let name of names">{{name}}</li>
+<ul *ngIf="names.length >= 4">
+  <!-- 
+       One structural directive per host element: *ngIf or *ngFor
+       The ng-container allow us to by-pass that
+    -->
+  <ng-container *ngFor="let name of names">
+      <li *ngIf="name.length > 4">{{name}} has {{name.length}} characters</li>
+  </ng-container>
 </ul>
+```
+
+## Components class
+```
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent {
+  names: string[];
+  constructor() { 
+    this.names = ['Jose', 'Leila', 'Artur'];
+    //this.names.push("Rodrigues");
+  }
+}
 ```
 
 # User input / Data binding
