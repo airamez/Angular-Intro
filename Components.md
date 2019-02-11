@@ -12,7 +12,7 @@ https://angular.io/guide/architecture
 - Add the Input to the import clause from '@angular/core'
 - Create a propert with the decorator @Input()
 - Change the tag adding the component to pass the input parameter using the annotation: ` [parameter_name] = "property/expression"`
-  - If we are passing just a string, it has to be delimited by ' ' or " " 
+  - If we are passing just a string (not a property), it has to be delimited (by ' ' or " " )
 
 ### Parent component HTML template
 ```
