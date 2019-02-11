@@ -243,7 +243,7 @@ export class DataBindingComponent {
   }
   addName (event) {
     debugger;
-    alert("Add User clicked!");
+    alert("Add User button clicked!");
   }
 }
 ```
