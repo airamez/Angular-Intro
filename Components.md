@@ -16,7 +16,7 @@ https://angular.io/guide/architecture
   - Change the tag adding the child component to pass the input parameter using the annotation: `[parameter_name] = "property/expression"`
   - If the input parameter value is just a string (not a property), it has to be delimited (by ' ' or " " )
 
-### Child HTML template
+### Child component HTML template: `data-binding.component.html`
 ```
 <input type="text" [(ngModel)]="newName"/>
 <button (click)="addName()">{{addButtonLabel}}</button>
@@ -26,7 +26,7 @@ https://angular.io/guide/architecture
 </ul>
 ```
 
-### Child Component class
+### Child Component class: `data-binding.component.ts`
 ```
 import { Component, OnInit, Input } from '@angular/core';
 @Component({
@@ -50,7 +50,7 @@ export class DataBindingComponent implements OnInit {
 }
 ```
 
-### Parent component HTML template
+### Parent component HTML template: `app.component.html`
 ```
 <app-data-binding [addButtonLabel] = "'Click to Add a Name'"></app-data-binding>
 <app-data-binding [addButtonLabel] = "'Add Name'"></app-data-binding>
@@ -64,7 +64,7 @@ export class DataBindingComponent implements OnInit {
   - Change the tag adding the child component to pass the input parameter using the annotation: `[parameter_name] = "property/expression"`
   - If the input parameter value is just a string (not a property), it has to be delimited (by ' ' or " " )
 
-### Child component HTML template
+### Child component HTML template: `data-binding.component.html`
 ```
 <div style="border-style: solid">
   <h2>Child component</h2>
@@ -76,7 +76,7 @@ export class DataBindingComponent implements OnInit {
 </div>
 ```
 
-### Child component class
+### Child component class: `data-binding.component.ts`
 ```
 import { Component, Input } from '@angular/core';
 @Component({
@@ -108,7 +108,7 @@ export class DataBindingComponent {
 }
 ```
 
-### Parent component HTML
+### Parent component HTML template: `app.component.html`
 ```
 <p>Add Button label: {{addButtonLabel}}</p>
 <button (click)="changeLabel(addButtonLabelInput.value)">Change 'addButtonLabel'</button>
@@ -118,7 +118,7 @@ export class DataBindingComponent {
 </app-data-binding>
 ```
 
-### Parent component class
+### Parent component class: `app.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -148,7 +148,7 @@ export class AppComponent {
   - Add a tag binding the output parameter to a method
   - Implement the method to receive the output parameter from the child component
   
-### Child component HTML template
+### Child component HTML template: `data-binding.component.html`
 ```
 <input type="text" [(ngModel)]="newName"/>
 <button (click)="addName()">{{addButtonLabel}}</button>
@@ -158,7 +158,7 @@ export class AppComponent {
 <button (click)="namesOuput()">Return names</button>
 ```
 
-### Child component class
+### Child component class: `data-binding.component.ts`
 ```
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
@@ -186,7 +186,7 @@ export class DataBindingComponent {
 }
 ```
 
-### Parent component HTML template
+### Parent component HTML template: `app.component.html`
 ```
 <app-data-binding (onNamesOuput)="namesOuput($event)"> </app-data-binding>
 <h3>Names</h3>
@@ -195,7 +195,7 @@ export class DataBindingComponent {
 </ul>
 ```
 
-### Parent component class
+### Parent component class: `app.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -246,7 +246,7 @@ export class AppComponent {
 - Add `implements OnInit` to the component class declaration
 - Implements the method `ngOnInit()`
 
-### Child component HTML template
+### Child component HTML template: `data-binding.component.html`
 ```
 <input type="text" [(ngModel)]="newName"/>
 <button (click)="addName()">Add Name</button>
@@ -256,7 +256,7 @@ export class AppComponent {
 </ul>
 ```
 
-### Child component class
+### Child component class: `app.component.ts`
 ```
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -287,7 +287,7 @@ export class DataBindingComponent implements OnInit {
 }
 ```
 
-### Parent component HTML template
+### Parent component HTML template: `app.component.html`
 ```
 <button (click)="showHideNames()">{{showHideNamesFlag ? 'Hide' : 'Show'}} Names</button>
 <div>
@@ -295,7 +295,7 @@ export class DataBindingComponent implements OnInit {
 </div>
 ```
 
-### Parent component class
+### Parent component class: `app.component.html`
 ```
 import { Component } from '@angular/core';
 @Component({
