@@ -258,7 +258,7 @@ export class AppComponent {
 </ul>
 ```
 
-### Child component class: `app.component.ts`
+### Child component class: `data-binding.component.ts`
 ```
 import { Component, OnInit } from '@angular/core';
 @Component({
@@ -319,7 +319,7 @@ export class AppComponent {
 - Add `implements OnDestroy` to the component class declaration
 - Implements the method `ngOnInit()`
 
-### Child component class: `app.component.ts`
+### Child component class: `data-binding.component.ts`
 ```
 import { Component, OnInit, OnDestroy } from '@angular/core';
 @Component({
