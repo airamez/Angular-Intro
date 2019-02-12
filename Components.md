@@ -244,6 +244,7 @@ export class AppComponent {
 
 ## ngOnInit
 - https://angular.io/api/core/OnInit
+  - A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
 - Add OnInit to the `@angular/core` import clause
 - Add `implements OnInit` to the component class declaration
 - Implements the method `ngOnInit()`
@@ -315,6 +316,7 @@ export class AppComponent {
 
 ## ngOnDestroy
 - https://angular.io/api/core/OnDestroy
+  - A lifecycle hook that is called when a directive, pipe, or service is destroyed.
 - Add OnDestroy to the `@angular/core` import clause
 - Add `implements OnDestroy` to the component class declaration
 - Implements the method `ngOnInit()`
@@ -330,9 +332,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class DataBindingComponent implements OnInit, OnDestroy {
   names: string[];
   newName: string;
-  constructor() {
-    // Constructors should be used only to inject dependences or initialize attributes 
-  }
+  constructor() { }
   addName () {
     if (this.newName) {
       this.names.push(this.newName);
@@ -355,7 +355,72 @@ export class DataBindingComponent implements OnInit, OnDestroy {
 }
 ```
 
-
 ## ngOnChanges
+- https://angular.io/api/core/OnChanges
+  - A lifecycle hook that is called when any data-bound input property of a directive changes.
+- Add OnChanges and SimpleChanges to the `@angular/core` import clause
+- Add `implements OnChanges` to the component class declaration
+- Implements the method `ngOnChanges(changes: SimpleChanges)`
+
+### Child component HTML template: `data-binding.component.html`
+```
+<p>{{firstName}}</p>
+<p>{{lastName}}</p>
+```
+
+### Child component class: `data-binding.component.ts`
+```
+import { Component, Input, OnChanges, SimpleChanges  } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent implements OnChanges {
+  @Input() firstName: string;
+  @Input() lastName: string;
+  constructor() {
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    for (let propName in changes) {
+      let chng = changes[propName];
+      let cur  = JSON.stringify(chng.currentValue);
+      let prev = JSON.stringify(chng.previousValue);
+      console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+    }
+  }
+}
+```
+
+### Parent component HTML template: `app.component.html`
+```
+<input type="text" #first_name />
+<input type="text" #last_name />
+<button (click)="saveName(first_name.value, last_name.value)">Update Name</button>
+<app-data-binding 
+  [firstName]='firstName'
+  [lastName]='lastName'>
+</app-data-binding>
+```
+
+### Parent component class: `app.component.html`
+```
+import { Component } from '@angular/core';
+import { last } from '@angular/router/src/utils/collection';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  firstName: string = "";
+  lastName: string = "";
+  saveName(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+```
 
 ## Styling: CSS
