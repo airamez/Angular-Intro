@@ -99,7 +99,7 @@ npm uninstall
 </div>
 ```
 
-### App class: `app.component.ts`
+### App component class: `app.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
