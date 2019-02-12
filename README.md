@@ -194,13 +194,14 @@ export class DataBindingComponent {
 https://angular.io/guide/structural-directives
 - Use `*ngIf='condition'` directive
 - The <ng-template> is an Angular element for rendering HTML. It is never displayed directly.
+  - It is used as a place holder to combine *ngFor and *ngIf
 
 ### HTML template: `data-binding.component.html`
 ```
 <ul *ngIf="names.length >= 4">
   <!-- 
        One structural directive per host element: *ngIf or *ngFor
-       The ng-container allow us to by-pass that
+       The ng-container allow us to comnbine them
     -->
   <ng-container *ngFor="let name of names">
       <li *ngIf="name.length > 4">{{name}} has {{name.length}} characters</li>
