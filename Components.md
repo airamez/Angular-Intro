@@ -139,7 +139,7 @@ export class AppComponent {
 }
 ```
 
-## Output paramters and EventEmitter
+## Output parameters and EventEmitter
 - On the child component
   - Add the Output to the import clause from '@angular/core'
   - Create a property of the type EventEmitter<return_type> and tag with the @Output() decorator
