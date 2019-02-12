@@ -228,15 +228,89 @@ export class AppComponent {
 - ngAfterContentInit
   - Respond after Angular projects external content into the component's view / the view that a directive is in.
   - Called once after the first ngDoCheck().
-- ngAfterContentChecked()	
+- ngAfterContentChecked
   - Respond after Angular checks the content projected into the directive/component.
   - Called after the ngAfterContentInit() and every subsequent ngDoCheck().
-- ngAfterViewInit()	
+- ngAfterViewInit
   - Respond after Angular initializes the component's views and child views / the view that a directive is in.
   - Called once after the first ngAfterContentChecked().
-- ngAfterViewChecked()	
+- ngAfterViewChecked	
   - Respond after Angular checks the component's views and child views / the view that a directive is in.
   - Called after the ngAfterViewInit() and every subsequent ngAfterContentChecked().
-- ngOnDestroy()	
+- ngOnDestroy
   - Cleanup just before Angular destroys the directive/component. Unsubscribe Observables and detach event handlers to avoid memory leaks.
   - Called just before Angular destroys the directive/component.
+
+## ngOnInit
+- Add OnInit to the `@angular/core` import clause
+- Add `implements OnInit` to the component class declaration
+- Implements the method `ngOnInit()`
+
+### Child component HTML template
+```
+<input type="text" [(ngModel)]="newName"/>
+<button (click)="addName()">Add Name</button>
+<button (click)="deleteNames()">Delete Names</button>
+<ul>
+  <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
+</ul>
+```
+
+### Child component class
+```
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent implements OnInit {
+  names: string[];
+  newName: string;
+  constructor() {
+    // Constructors should be used only to inject dependences or initialize attributes 
+  }
+  ngOnInit() {
+    debugger;
+    this.names = ['Jose', 'Leila', 'Artur'];
+    this.newName = "";
+  }
+  addName () {
+    if (this.newName) {
+      this.names.push(this.newName);
+      this.newName = '';
+    }
+  }
+  deleteNames() {
+    this.names = [];
+  }
+}
+```
+
+### Parent component HTML template
+```
+<button (click)="showHideNames()">{{showHideNamesFlag ? 'Hide' : 'Show'}} Names</button>
+<div>
+  <app-data-binding *ngIf="showHideNamesFlag"></app-data-binding>
+</div>
+```
+
+### Parent component class
+```
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  showHideNamesFlag: boolean = true;
+  showHideNames() {
+    this.showHideNamesFlag = !this.showHideNamesFlag;
+  }
+}
+```
+
+## ngOnDestroy
+## ngOnChanges
+
