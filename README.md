@@ -80,18 +80,26 @@ npm uninstall
 - /src/app/app.component.spec.ts
 - /node_modules
 
+# Building and deploying an Angular application
+- https://angular.io/guide/deployment
+- Run CLI commands:
+  - `ng build`
+  - `ng build --prod`
+- All required files will be generated/copied to the fold: `/dist/`
+- The web-server has to be configured to redirect missing files to index.html
+
 # Preparing for a new project
 
 ## Cleaning files
 
-### app.component.html
+### App HTML template: `app.component.html`
 ```
 <div style="text-align:center">
   <h1>Learning Angular</h1>
 </div>
 ```
 
-### app.component.ts
+### App class: `app.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -117,7 +125,7 @@ CREATE src/app/data-binding/data-binding.component.css (0 bytes)
 ## Adding the component to the Application
 - Add the component `selector` as an HTML tag to the `app.component.html`
 
-### app.component.html
+### App HTML tempalte: `app.component.html`
 ```
 <div style="text-align:center">
   <h1>Learning Angular</h1>
@@ -133,14 +141,14 @@ CREATE src/app/data-binding/data-binding.component.css (0 bytes)
 ## Showing component properties with interpolation
   - Use the double curly braces: `{{property / expression}}`
 
-### HTML template
+### HTML template: `data-binding.component.html`
 ```
 <p>
   User Name: {{user_name}} has {{user_name.length}} characters
 </p>
 ```
 
-### Component class
+### Component class: `data-binding.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -159,14 +167,14 @@ export class DataBindingComponent {
 ## Showing data with interpolation looping thru collections
 - Use `*ngFor="let element of collection"` directive
 
-### HTML template
+### HTML template: `data-binding.component.html`
 ```
 <ul>
   <li *ngFor="let name of names">{{name}} has {{name?.length}} characters</li>
 </ul>
 ```
 
-### Component class
+### Component class: `data-binding.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -187,7 +195,7 @@ https://angular.io/guide/structural-directives
 - Use `*ngIf='condition'` directive
 - The <ng-template> is an Angular element for rendering HTML. It is never displayed directly.
 
-### HTML template
+### HTML template: `data-binding.component.html`
 ```
 <ul *ngIf="names.length >= 4">
   <!-- 
@@ -200,7 +208,7 @@ https://angular.io/guide/structural-directives
 </ul>
 ```
 
-### Components class
+### Component class: `data-binding.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -220,7 +228,7 @@ export class DataBindingComponent {
 ## Binding a method to a button click
 - Use the notation: (event)="method($event)"
 
-### HTML template
+### HTML template: `data-binding.component.html`
 ```
 <button (click)="addName($event)">Add Name</button>
 <ul>
@@ -228,7 +236,7 @@ export class DataBindingComponent {
 </ul>
 ```
 
-### Component class
+### Component class: `data-binding.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -252,7 +260,7 @@ export class DataBindingComponent {
 - A template reference varible provide direct access to an element from within the template.
 - To declare a template reference variable, precede an identifier with a hash (or pound) character (#).
 
-### HTML template
+### HTML template: `data-binding.component.html`
 ```
 <input type="text" #newName>
 <button (click)="addName(newName)">Add Name</button>
@@ -261,7 +269,7 @@ export class DataBindingComponent {
 </ul>
 ```
 
-### Component class
+### Component class: `data-binding.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -313,7 +321,7 @@ import { FormsModule } from '@angular/forms';
 export class AppModule { }
 ```
 
-### HTML template
+### HTML template: `data-binding.component.html`
 ```
 <input type="text" [(ngModel)]="newName" />
 <button (click)="addName()">Add Name</button>
@@ -323,7 +331,7 @@ export class AppModule { }
 </ul>
 ```
 
-### Component class
+### Component class: `data-binding.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -348,7 +356,7 @@ export class DataBindingComponent {
 ## Get user input from the $event object
 - The $event represents the DOM event and carry a payload of information about the event/component
 
-### HTML template
+### HTML template: `data-binding.component.html`
 ```
 <input type="text" [(ngModel)]="newName" (keyup)="newNameOnKey($event)"/>
 <button (click)="addName()">Add Name</button>
@@ -358,7 +366,7 @@ export class DataBindingComponent {
 </ul>
 ```
 
-### Component class
+### Component class: `data-binding.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
@@ -389,7 +397,7 @@ export class DataBindingComponent {
 ## Key event filtering (with key.enter)
 - The (keyup) event handler hears every keystroke. Sometimes only the Enter key matters, because it signals that the user has finished typing.
 
-### HTML template
+### HTML template: `data-binding.component.html`
 ```
 <input type="text" [(ngModel)]="newName" (keyup.enter)="addName()"/>
 <button (click)="addName()">Add Name</button>
@@ -400,7 +408,7 @@ export class DataBindingComponent {
 </ul>
 ```
 
-### Component class
+### Component class: `data-binding.component.ts`
 ```
 import { Component } from '@angular/core';
 @Component({
