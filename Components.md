@@ -238,10 +238,12 @@ export class AppComponent {
   - Respond after Angular checks the component's views and child views / the view that a directive is in.
   - Called after the ngAfterViewInit() and every subsequent ngAfterContentChecked().
 - ngOnDestroy
-  - Cleanup just before Angular destroys the directive/component. Unsubscribe Observables and detach event handlers to avoid memory leaks.
+  - Cleanup just before Angular destroys the directive/component.
+  - Unsubscribe Observables and detach event handlers to avoid memory leaks.
   - Called just before Angular destroys the directive/component.
 
 ## ngOnInit
+- https://angular.io/api/core/OnInit
 - Add OnInit to the `@angular/core` import clause
 - Add `implements OnInit` to the component class declaration
 - Implements the method `ngOnInit()`
@@ -268,12 +270,7 @@ export class DataBindingComponent implements OnInit {
   names: string[];
   newName: string;
   constructor() {
-    // Constructors should be used only to inject dependences or initialize attributes 
-  }
-  ngOnInit() {
-    debugger;
-    this.names = ['Jose', 'Leila', 'Artur'];
-    this.newName = "";
+    // Constructors should be used only to inject dependencies or initialize attributes 
   }
   addName () {
     if (this.newName) {
@@ -283,6 +280,11 @@ export class DataBindingComponent implements OnInit {
   }
   deleteNames() {
     this.names = [];
+  }
+  ngOnInit() {
+    debugger;
+    this.names = ['Jose', 'Leila', 'Artur'];
+    this.newName = "";
   }
 }
 ```
@@ -312,5 +314,48 @@ export class AppComponent {
 ```
 
 ## ngOnDestroy
+- https://angular.io/api/core/OnDestroy
+- Add OnDestroy to the `@angular/core` import clause
+- Add `implements OnDestroy` to the component class declaration
+- Implements the method `ngOnInit()`
+
+### Child component class: `app.component.ts`
+```
+import { Component, OnInit, OnDestroy } from '@angular/core';
+@Component({
+  selector: 'app-data-binding',
+  templateUrl: './data-binding.component.html',
+  styleUrls: ['./data-binding.component.css']
+})
+export class DataBindingComponent implements OnInit, OnDestroy {
+  names: string[];
+  newName: string;
+  constructor() {
+    // Constructors should be used only to inject dependences or initialize attributes 
+  }
+  addName () {
+    if (this.newName) {
+      this.names.push(this.newName);
+      this.newName = '';
+    }
+  }
+  deleteNames() {
+    this.names = [];
+  }
+  ngOnInit() {
+    debugger;
+    this.names = ['Jose', 'Leila', 'Artur'];
+    this.newName = "";
+  }
+  ngOnDestroy() {
+    debugger;
+    this.names = null; // Pretending we are releasing resources
+    console.log('Component destroyed');
+  }
+}
+```
+
+
 ## ngOnChanges
 
+## Styling: CSS
